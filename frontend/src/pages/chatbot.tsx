@@ -71,72 +71,73 @@ export default function Chatbot() {
   }
 
   return (
-    <div className="overflow-y-clip">
-      <h1 className="text-3xl font-bold">
-        <center>
-          <TypingAnimation>Chatbot🤖</TypingAnimation>
-        </center>
-      </h1>
+    <div style={{ width: "100%", height: "600px", position: "relative" }}>
+        <h1 className="text-3xl font-bold">
+          <center>
+            <TypingAnimation>Chatbot🤖</TypingAnimation>
+          </center>
+        </h1>
 
-      <div className="w-[70vw] h-[70vh] bg-neutral-800 m-auto rounded-2xl flex flex-col">
-        <div className="w-full flex-1 p-2 flex flex-col overflow-x-hidden overflow-y-auto scrollbar-hidden">
-          {messages.map((msg, index) => (
-            <div
-              key={index}
-              className={`flex ${
-                msg.sender === "user" ? "justify-end" : "justify-start"
-              } w-full`}
-            >
+        <div className="w-[70vw] h-[70vh] bg-neutral-800 m-auto rounded-2xl flex flex-col">
+          <div className="w-full flex-1 p-2 flex flex-col overflow-x-hidden overflow-y-auto scrollbar-hidden">
+            {messages.map((msg, index) => (
               <div
-                className={`${
-                  msg.sender === "user" ? "bg-blue-500" : "bg-neutral-700"
-                } max-w-[60%] rounded-2xl p-2 m-2 text-white break-words whitespace-pre-wrap`}
+                key={index}
+                className={`flex ${
+                  msg.sender === "user" ? "justify-end" : "justify-start"
+                } w-full`}
               >
-                {msg.text}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="flex items-center gap-2 p-2">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <button className="px-4 py-2 rounded-2xl bg-neutral-700 text-white border border-gray-500 focus:outline-none flex items-center gap-1">
-                {selectedMode ? selectedMode : "Mode"} <ChevronDown size={16} />
-              </button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent
-              align="start"
-              className="bg-neutral-800 text-white rounded-md shadow-md border border-gray-600"
-            >
-              {["Default", "Hint", "Debug", "Answer"].map((mode) => (
-                <DropdownMenuItem
-                  key={mode}
-                  className="px-3 py-1 hover:bg-neutral-700 cursor-pointer"
-                  onSelect={() => setSelectedMode(mode)}
+                <div
+                  className={`${
+                    msg.sender === "user" ? "bg-blue-500" : "bg-neutral-700"
+                  } max-w-[60%] rounded-2xl p-2 m-2 text-white break-words whitespace-pre-wrap`}
                 >
-                  {mode}
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
+                  {msg.text}
+                </div>
+              </div>
+            ))}
+          </div>
 
-          <input
-            className="flex-1 p-2 rounded-2xl bg-neutral-700 text-white border border-gray-500 focus:outline-none"
-            placeholder="Ask anything..."
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-          />
+          <div className="flex items-center gap-2 p-2">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button className="px-4 py-2 rounded-2xl bg-neutral-700 text-white border border-gray-500 focus:outline-none flex items-center gap-1">
+                  {selectedMode ? selectedMode : "Mode"}{" "}
+                  <ChevronDown size={16} />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                align="start"
+                className="bg-neutral-800 text-white rounded-md shadow-md border border-gray-600"
+              >
+                {["Default", "Hint", "Debug", "Answer"].map((mode) => (
+                  <DropdownMenuItem
+                    key={mode}
+                    className="px-3 py-1 hover:bg-neutral-700 cursor-pointer"
+                    onSelect={() => setSelectedMode(mode)}
+                  >
+                    {mode}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
 
-          <Button
-            className="px-4 py-2 rounded-2xl bg-neutral-700 text-white border border-gray-500 focus:outline-none"
-            onClick={generateAnswer}
-          >
-            Send
-          </Button>
+            <input
+              className="flex-1 p-2 rounded-2xl bg-neutral-700 text-white border border-gray-500 focus:outline-none"
+              placeholder="Ask anything..."
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+            />
+
+            <Button
+              className="px-4 py-2 rounded-2xl bg-neutral-700 text-white border border-gray-500 focus:outline-none"
+              onClick={generateAnswer}
+            >
+              Send
+            </Button>
+          </div>
         </div>
-      </div>
     </div>
   );
 }

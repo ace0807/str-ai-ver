@@ -1,6 +1,9 @@
+"use client";
+
 import { FlipWords } from "../components/ui/flip-words";
 import { SparklesCore } from "../components/ui/sparkles";
 import { StickyScroll } from "../components/ui/sticky-scroll-reveal";
+import SplitText from "../components/ui/SplitText";
 
 const content = [
   {
@@ -80,8 +83,21 @@ export default function Home() {
           <FlipWords words={words} duration={1000} />
           with
         </center>
-        <h1 className="text-[7em] m-30px">
-          <center>STRAIVER</center>
+        <h1>
+          <center>
+            <SplitText
+              text="STRAIVER"
+              className="text-[7em] m-30px"
+              delay={100}
+              duration={0.6}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.1}
+              rootMargin="-100px"
+            />
+          </center>
         </h1>
         <div className="w-[40rem] h-40 relative m-auto overflow-hidden">
           {/* Gradients */}
@@ -109,7 +125,7 @@ export default function Home() {
         <StickyScroll content={content} />
       </div>
 
-      <div className="w-full h-[50vh]"></div>
+      <div className="w-full h-[30vh]"></div>
     </div>
   );
 }
