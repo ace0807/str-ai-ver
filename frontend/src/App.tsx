@@ -15,7 +15,7 @@ function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <Router>
-        <nav className="w-full bg-gradient-to-t from-amber-300 to-amber-400 text-black flex justify-evenly p-1 items-center z-1000">
+        <nav className="w-full bg-gradient-to-t from-amber-300 to-amber-400 text-black flex justify-evenly p-1 items-center fixed z-49">
           <Link to="/">Home</Link>
           <Link to="/learn">Learn</Link>
           <Link to="/chatbot">Chatbot</Link>

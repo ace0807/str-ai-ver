@@ -59,7 +59,7 @@ const content = [
     content: (
       <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] text-white">
         <img
-          src=""
+          src="https://pplx-res.cloudinary.com/image/upload/v1750764917/gpt4o_images/dlsyc48vw8imloztpdsb.png"
           width={300}
           height={300}
           className="h-full w-full object-cover"
